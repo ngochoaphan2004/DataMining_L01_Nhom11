@@ -42,10 +42,10 @@ Note: Ensure the input CSV file path is correctly set in the scripts.
 - `Apriori.py`: Implements Apriori algorithm for finding association rules.
 - `RandomForest.py`: Builds and evaluates Random Forest model for crime type prediction.
 - `requirements.txt`: Lists all Python dependencies.
-- `Apriori.csv`: Output file for Apriori results (if generated).
+- `Crime_Data_Selected_Cleaned.csv.csv`: Input file for Apriori.py and RandomForest.py.
 
 ## Requirements
-- Python 3.x
+- Python >= 3.11
 - Libraries: numpy, pandas, matplotlib, mlxtend, scikit-learn, scipy, lightgbm
 
 ## Dataset
