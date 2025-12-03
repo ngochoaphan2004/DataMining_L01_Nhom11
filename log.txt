@@ -1,0 +1,112 @@
+(.venv) E:\College\Semester 7\Data mining\BTl\crime>python RandomForest.py
+
+--- GOM NHÓM HOÀN TẤT ---
+Kết quả số lượng các nhóm mới:
+Crm Cd Desc
+PROPERTY       286356
+VIOLENT        147374
+FRAUD           39588
+OTHER_CRIME     25571
+Name: count, dtype: int64
+Số lượng record: 498889
+Crm Cd Desc
+PROPERTY       286356
+VIOLENT        147374
+FRAUD           39588
+OTHER_CRIME     25571
+Name: count, dtype: int64
+=== Thử các giá trị max_depth của RandomForest ===
+max_depth=2: Train=0.5740, Test=0.5740
+max_depth=4: Train=0.5937, Test=0.5942
+max_depth=6: Train=0.6091, Test=0.6101
+max_depth=8: Train=0.6192, Test=0.6197
+max_depth=10: Train=0.6308, Test=0.6281
+max_depth=12: Train=0.6494, Test=0.6383
+max_depth=15: Train=0.6967, Test=0.6516
+max_depth=20: Train=0.8550, Test=0.6627
+max_depth=25: Train=0.9795, Test=0.6641
+max_depth=30: Train=0.9984, Test=0.6608
+max_depth=None: Train=0.9987, Test=0.6597
+Đã lưu biểu đồ xác định max_depth vào 'random_forest_find_max_depth.png'
+=== Tìm kiếm tham số tốt nhất (dùng K-Fold với k = 3) ===
+Depth: 8, Trees: 50, Leaf: 5 -> CV Score: 0.4809
+Depth: 8, Trees: 50, Leaf: 10 -> CV Score: 0.4795
+Depth: 8, Trees: 50, Leaf: 20 -> CV Score: 0.4783
+Depth: 8, Trees: 100, Leaf: 5 -> CV Score: 0.4836
+Depth: 8, Trees: 100, Leaf: 10 -> CV Score: 0.4819
+Depth: 8, Trees: 100, Leaf: 20 -> CV Score: 0.4824
+Depth: 8, Trees: 150, Leaf: 5 -> CV Score: 0.4848
+Depth: 8, Trees: 150, Leaf: 10 -> CV Score: 0.4822
+Depth: 8, Trees: 150, Leaf: 20 -> CV Score: 0.4834
+Depth: 10, Trees: 50, Leaf: 5 -> CV Score: 0.5136
+Depth: 10, Trees: 50, Leaf: 10 -> CV Score: 0.5105
+Depth: 10, Trees: 50, Leaf: 20 -> CV Score: 0.5119
+Depth: 10, Trees: 100, Leaf: 5 -> CV Score: 0.5150
+Depth: 10, Trees: 100, Leaf: 10 -> CV Score: 0.5140
+Depth: 10, Trees: 100, Leaf: 20 -> CV Score: 0.5134
+Depth: 10, Trees: 150, Leaf: 5 -> CV Score: 0.5151
+Depth: 10, Trees: 150, Leaf: 10 -> CV Score: 0.5144
+Depth: 10, Trees: 150, Leaf: 20 -> CV Score: 0.5143
+Depth: 12, Trees: 50, Leaf: 5 -> CV Score: 0.5418
+Depth: 12, Trees: 50, Leaf: 10 -> CV Score: 0.5412
+Depth: 12, Trees: 50, Leaf: 20 -> CV Score: 0.5374
+Depth: 12, Trees: 100, Leaf: 5 -> CV Score: 0.5434
+Depth: 12, Trees: 100, Leaf: 10 -> CV Score: 0.5440
+Depth: 12, Trees: 100, Leaf: 20 -> CV Score: 0.5392
+Depth: 12, Trees: 150, Leaf: 5 -> CV Score: 0.5441
+Depth: 12, Trees: 150, Leaf: 10 -> CV Score: 0.5442
+Depth: 12, Trees: 150, Leaf: 20 -> CV Score: 0.5399
+Depth: 15, Trees: 50, Leaf: 5 -> CV Score: 0.5826
+Depth: 15, Trees: 50, Leaf: 10 -> CV Score: 0.5762
+Depth: 15, Trees: 50, Leaf: 20 -> CV Score: 0.5662
+Depth: 15, Trees: 100, Leaf: 5 -> CV Score: 0.5859
+Depth: 15, Trees: 100, Leaf: 10 -> CV Score: 0.5787
+Depth: 15, Trees: 100, Leaf: 20 -> CV Score: 0.5676
+Depth: 15, Trees: 150, Leaf: 5 -> CV Score: 0.5864
+Depth: 15, Trees: 150, Leaf: 10 -> CV Score: 0.5794
+Depth: 15, Trees: 150, Leaf: 20 -> CV Score: 0.5683
+
+Best parameters found:  {'model__max_depth': 15, 'model__n_estimators': 150, 'model__min_samples_leaf': 5}
+Best CV Score:  0.5863982701554206
+Đang vẽ biểu đồ với cố định min_samples_leaf = 5 (Giá trị tối ưu nhất)...
+Đã lưu biểu đồ 9 đường vào 'random_forest_sweet_spot.png'
+
+[Mô hình cuối cùng] Đánh giá với K-Fold k=10 trên tập TRAIN
+              precision    recall  f1-score   support
+
+       FRAUD       0.29      0.73      0.41     31670
+ OTHER_CRIME       0.17      0.17      0.17     20457
+    PROPERTY       0.77      0.69      0.73    229085
+     VIOLENT       0.53      0.42      0.46    117899
+
+    accuracy                           0.58    399111
+   macro avg       0.44      0.50      0.44    399111
+weighted avg       0.63      0.58      0.60    399111
+
+!!! Độ chính xác với 10-Fold CV trên TRAIN: 58.48%
+
+--- Kết quả trên tập TEST ---
+              precision    recall  f1-score   support
+
+       FRAUD       0.29      0.73      0.41      7918
+ OTHER_CRIME       0.17      0.18      0.18      5114
+    PROPERTY       0.77      0.69      0.73     57271
+     VIOLENT       0.53      0.42      0.47     29475
+
+    accuracy                           0.59     99778
+   macro avg       0.44      0.50      0.45     99778
+weighted avg       0.63      0.59      0.60     99778
+
+!!! Độ chính xác trên tập TRAIN: 64.47%
+----------------------------------------
+Đang phân tích dữ liệu đầu vào...
+   TIME OCC     LAT     LON AREA NAME Premis Desc DayOfWeek     Month
+0      2300  34.044 -118.24   Central      STREET    Friday  December
+----------------------------------------
+KẾT QUẢ DỰ ĐOÁN: PROPERTY
+
+Độ tin cậy (Xác suất):
+ - FRAUD: 0.63%
+ - OTHER_CRIME: 21.29%
+ - PROPERTY: 51.57%
+ - VIOLENT: 26.52%
